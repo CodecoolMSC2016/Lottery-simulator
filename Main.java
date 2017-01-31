@@ -7,9 +7,11 @@ public class Main {
 		switch(userChoice) {
 			case 1:
 				Simulation.generateData(5, 90);
+				Simulation.getChosenNumbers(5, 90);
 				break;
 			case 2:
 				Simulation.generateData(6, 45);
+				Simulation.getChosenNumbers(6, 45);
 				break;
 		}
 	

@@ -36,4 +36,10 @@ public class Logger
 		return selection;
 
 	}
+	public static void error() {
+		 System.out.println("invalid input, please re-enter your choice");
+	}
+	public static void getNumbers () {
+		System.out.println("Enter your numbers:");
+	}
 }
