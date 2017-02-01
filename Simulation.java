@@ -29,6 +29,10 @@ public class Simulation
 
 		for (int i = 0; i < numberOfBalls; i++)        {
             		int number = (int) (Math.ceil(Math.random() * endNumber));
+			if (chosenNumbers.contains(number))
+            			{
+                			winCount += 1;
+				}
             
             		while (true)
             		{
@@ -46,38 +50,81 @@ public class Simulation
 		}
 		Collections.sort(winningNumbers);
 
-    		PrintWriter printout;
-		try {
-			printout = new PrintWriter(new FileOutputStream("Simulation.csv", true));
-			printout.append(Integer.toString(winningNumbers.get(0)));
-			printout.append(",");
-			printout.append(Integer.toString(winningNumbers.get(1)));
-			printout.append(",");
-			printout.append(Integer.toString(winningNumbers.get(2)));
-			printout.append(",");
-			printout.append(Integer.toString(winningNumbers.get(3)));
-			printout.append(",");
-			printout.append(Integer.toString(winningNumbers.get(4)));
-			if (numberOfBalls == 6){
-				printout.append(",");
-				printout.append(Integer.toString(winningNumbers.get(5)));				
-			}
-			printout.append("\n");
-			printout.close();
-		} catch(IOException e) {}
-		
-		System.out.println(winningNumbers);
-            	
-		if (winningNumbers.contains(choice))
-            	{
-                	winCount += 1;
-		}
-		System.out.println(winCount);
-		winningNumbers.clear();
-		winCount = 0;
+		writeCsv();
 	}
+
+	private static void writeCsv() {
+
+		if (numberOfBalls == 5) {
+			
+			PrintWriter printout;
+			try {				
+				printout = new PrintWriter(new FileOutputStream("Simulation5.csv", true));				
+				printout.append(Integer.toString(winningNumbers.get(0)));
+				printout.append(",");
+				printout.append(Integer.toString(winningNumbers.get(1)));
+				printout.append(",");
+				printout.append(Integer.toString(winningNumbers.get(2)));
+				printout.append(",");
+				printout.append(Integer.toString(winningNumbers.get(3)));
+				printout.append(",");
+				printout.append(Integer.toString(winningNumbers.get(4)));
+				printout.append(",");
+				printout.append(Integer.toString(winCount));				
+				printout.append("\n");
+				printout.close();
+				Logger.log("Show generated numbers", "Generated numbers: ", "ts");
+				Logger.logresult("Print out generated numbers", winningNumbers, "ts");
+				Logger.log("Show matches between choosen and generated numbers", "Matches found: ", "ts");
+				Logger.log("Print out matches", Integer.toString(winCount), "ts");
+				Logger.logsep("Separe each generation");
+				winningNumbers.clear();
+				winCount = 0;
+			} catch(IOException e) {}
+		
+			
+		}
+		if (numberOfBalls == 6) {
+			
+			PrintWriter printout;
+			try {				
+				if (winningNumbers.contains(choice))
+            				{
+                				winCount += 1;
+					}
+				printout = new PrintWriter(new FileOutputStream("Simulation6.csv", true));				
+				printout.append(Integer.toString(winningNumbers.get(0)));
+				printout.append(",");
+				printout.append(Integer.toString(winningNumbers.get(1)));
+				printout.append(",");
+				printout.append(Integer.toString(winningNumbers.get(2)));
+				printout.append(",");
+				printout.append(Integer.toString(winningNumbers.get(3)));
+				printout.append(",");
+				printout.append(Integer.toString(winningNumbers.get(4)));
+				printout.append(",");
+				printout.append(Integer.toString(winningNumbers.get(5)));
+				printout.append(",");
+				printout.append(Integer.toString(winCount));				
+				printout.append("\n");
+				printout.close();
+				Logger.log("Show generated numbers", "Generated numbers: ", "ts");
+				Logger.logresult("Print out generated numbers", winningNumbers, "ts");
+				Logger.log("Show matches between choosen and generated numbers", "Matches found: ", "ts");
+				Logger.log("Print out matches", Integer.toString(winCount), "ts");
+				Logger.logsep("Separe each generation");
+				winningNumbers.clear();
+				winCount = 0;
+			} catch(IOException e) {}
+		
+			
+		}
+
+
+	}
+
 	public static void getChosenNumbers(int endNumber)	{
-        Logger.getNumbers();
+        Logger.log("getNumbers", "Enter your numbers:", "ts");
 
         //get the numbers from the user
         for (int i = 0; i < numberOfBalls; i++)
@@ -92,14 +139,14 @@ public class Simulation
                     //is the chosen number in the correct range
                     if (choice < 1 || choice > endNumber)
                     {
-                        Logger.error();
+                        Logger.log("Error", "The number you entered, not in range!", "ts");
                         continue;
                     }
                     
                     //has the chosen number already been chosen
                     if (chosenNumbers.contains(choice))
                     {
-                        Logger.error();
+                        Logger.log("Error", "This number was chosen already!", "ts");
                         continue;
                     }
                     
@@ -110,7 +157,7 @@ public class Simulation
                 //catch if inputted value is not integer and reset scanner so it can be re-entered
                 catch (InputMismatchException exception) 
                 {
-                    Logger.error();
+                    Logger.log("Error", "The value is not an integer!", "ts");
                     sc.next();
                 }
             }
@@ -119,7 +166,10 @@ public class Simulation
             chosenNumbers.add(choice);
             
         } Collections.sort(chosenNumbers);
-		System.out.println(chosenNumbers);
+	Logger.logsep("Separe your numbers");
+	Logger.log("Show your numbers", "Your numbers: ", "ts");
+	Logger.logresult("Print out your numbers", chosenNumbers, "ts");
+	Logger.logsep("Separe your numbers");
 
 }
 	

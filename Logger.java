@@ -1,7 +1,41 @@
-import java.util.Scanner;
+import java.util.*;
+import java.text.*;
+import java.time.*;
 
 public class Logger
 {
+
+	String type;
+	String message;
+	String timeStamp;
+	List<Integer> resultList;
+
+	public Logger(String gettype, String text, List<Integer> resultList) {
+
+		type = gettype;
+		message = text;
+		resultList = resultList;
+		timeStamp = getDateTime();
+	}
+
+	public static void log(String type, String message, String ts) {
+		System.out.println(getDateTime() + " " + message + "\n");
+	}
+
+	public static void logresult(String type, List<Integer> resultList, String ts) {
+		System.out.println(getDateTime() + " " + resultList + "\n");
+	}
+
+	public static void logsep(String type) {
+		System.out.println("--------------------------------------------------\n");
+	}
+
+    	public static String getDateTime() {
+        	DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        	Date date = new Date();
+
+        	return "[" + dateFormat.format(date) + "] ";
+	}
 
 	public static int menu()
 	{
@@ -34,12 +68,6 @@ public class Logger
 				
 		}
 		return selection;
+	}
 
-	}
-	public static void error() {
-		 System.out.println("invalid input, please re-enter your choice");
-	}
-	public static void getNumbers () {
-		System.out.println("Enter your numbers:");
-	}
 }
