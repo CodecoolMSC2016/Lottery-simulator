@@ -58,11 +58,23 @@ public class Simulation
 			printout.append(Integer.toString(winningNumbers.get(3)));
 			printout.append(",");
 			printout.append(Integer.toString(winningNumbers.get(4)));
+			if (numberOfBalls == 6){
+				printout.append(",");
+				printout.append(Integer.toString(winningNumbers.get(5)));				
+			}
 			printout.append("\n");
 			printout.close();
 		} catch(IOException e) {}
-
+		
 		System.out.println(winningNumbers);
+            	
+		if (winningNumbers.contains(choice))
+            	{
+                	winCount += 1;
+		}
+		System.out.println(winCount);
+		winningNumbers.clear();
+		winCount = 0;
 	}
 	public static void getChosenNumbers(int endNumber)	{
         Logger.getNumbers();
@@ -106,15 +118,9 @@ public class Simulation
             //add the chosen number to the list
             chosenNumbers.add(choice);
             
-            //if the chosen number is in the list of winning numbers, add one the the win count
-            if (winningNumbers.contains(choice))
-            {
-                winCount += 1;
-            }
-            
         } Collections.sort(chosenNumbers);
 		System.out.println(chosenNumbers);
-		System.out.println(winCount);
+
 }
 	
 	
