@@ -26,12 +26,26 @@ public class Result {
 
 	public static void getTopNumbers() {
 
-			
+	    String csvFile = "Simulation5.csv";
+            String line = "";
+            String cvsSplitBy = ",";
+		
+            try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
+
+            	while ((line = br.readLine()) != null) {
+
+                    // use comma as separator
+                    String[] number = line.split(cvsSplitBy);
+
+                    System.out.println("[first= " + number[0] + ", secound= " + number[1] + ", third= " + number[2] + ", fourth= " + number[3] + ", fifth= " + number[4]+"]");
+
+            	}
+
+            } catch (IOException e) {
+            e.printStackTrace();
+            }	
 
 	}
-	
-
-
 
 
 }
