@@ -2,7 +2,8 @@ public class Main {
 
 	public static void main (String [] args) {
 		int userChoice;
-		
+		int repeat;		
+
 		userChoice = Logger.menu();
 		switch(userChoice) {
 			case 1:
@@ -14,6 +15,11 @@ public class Main {
 				Simulation.getChosenNumbers(6, 45);
 				break;
 		}
+
+		repeat = Integer.parseInt(args[0]);
+        		for (int i = 0; i < repeat; i++) {
+            			System.out.println("Yes"); // change: Type: Simulation, .generateSimulation(repeat)
+			}
 	
 	}
 }
