@@ -3,15 +3,29 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Collections;
 import java.util.Scanner;
+import java.io.PrintWriter;
+import java.io.File;
+import java.io.IOException;
+import java.io.FileOutputStream;
+
 
 public class Simulation 
 {
+	public static int numberOfBalls;
  	public static List<Integer> winningNumbers = new ArrayList<>();
 	public static List<Integer> chosenNumbers = new ArrayList<>();
 	public static Scanner sc = new Scanner(System.in);
 	public static int winCount = 0, choice;
 
-	public static void generateData(int numberOfBalls, int endNumber) {
+	public Simulation(int numberOfBalls) {
+		this.numberOfBalls = numberOfBalls;
+	}
+
+	public static void setNumberOfBalls(int number) {
+		numberOfBalls = number;
+	}
+
+	public static void generateData(int endNumber) {
 
 		for (int i = 0; i < numberOfBalls; i++)        {
             		int number = (int) (Math.ceil(Math.random() * endNumber));
@@ -29,10 +43,28 @@ public class Simulation
                     			break;
                 		}
             		}
-		} Collections.sort(winningNumbers);
+		}
+		Collections.sort(winningNumbers);
+
+    		PrintWriter printout;
+		try {
+			printout = new PrintWriter(new FileOutputStream("Simulation.csv", true));
+			printout.append(Integer.toString(winningNumbers.get(0)));
+			printout.append(",");
+			printout.append(Integer.toString(winningNumbers.get(1)));
+			printout.append(",");
+			printout.append(Integer.toString(winningNumbers.get(2)));
+			printout.append(",");
+			printout.append(Integer.toString(winningNumbers.get(3)));
+			printout.append(",");
+			printout.append(Integer.toString(winningNumbers.get(4)));
+			printout.append("\n");
+			printout.close();
+		} catch(IOException e) {}
+
 		System.out.println(winningNumbers);
 	}
-	public static void getChosenNumbers(int numberOfBalls, int endNumber)	{
+	public static void getChosenNumbers(int endNumber)	{
         Logger.getNumbers();
 
         //get the numbers from the user
@@ -82,6 +114,7 @@ public class Simulation
             
         } Collections.sort(chosenNumbers);
 		System.out.println(chosenNumbers);
+		System.out.println(winCount);
 }
 	
 	

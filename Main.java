@@ -6,12 +6,14 @@ public class Main {
 		userChoice = Logger.menu();
 		switch(userChoice) {
 			case 1:
-				Simulation.generateData(5, 90);
-				Simulation.getChosenNumbers(5, 90);
+				Simulation.setNumberOfBalls(5);
+				Simulation.generateData(90);
+				Simulation.getChosenNumbers(90);
 				break;
 			case 2:
-				Simulation.generateData(6, 45);
-				Simulation.getChosenNumbers(6, 45);
+				Simulation.setNumberOfBalls(5);
+				Simulation.generateData(45);
+				Simulation.getChosenNumbers(45);
 				break;
 		}
 	
