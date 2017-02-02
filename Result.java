@@ -36,6 +36,7 @@ public class Result {
 	public static List<String> getTopNumbers () {
         	Path pathToFile = Paths.get("Simulation5.csv");
 
+<<<<<<< HEAD
         	// create an instance of BufferedReader
         	// using try with resource, Java 7 feature to close resources
         	try (BufferedReader br = Files.newBufferedReader(pathToFile,
@@ -56,6 +57,28 @@ public class Result {
 				for(int i=0; i<5; i++) {
                 			topNumbers.add(attributes[i]);
 				}
+=======
+	    String csvFile = "Simulation5.csv";
+            String line = "";
+            String cvsSplitBy = ",";
+		
+            try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
+
+            	while ((line = br.readLine()) != null) {
+
+                    // use comma as separator
+                    String[] number = line.split(cvsSplitBy);
+
+                    System.out.println("[first= " + number[0] + ", secound= " + number[1] + ", third= " + number[2] + ", fourth= " + number[3] + ", fifth= " + number[4]+"]");
+
+            	}
+
+            } catch (IOException e) {
+            e.printStackTrace();
+            }	
+
+	}
+>>>>>>> 2efb6d556b0d45b9200e38ffb6bf938a7041c829
 
                		// read next line before looping
                 	// if end of file reached, line would be null
