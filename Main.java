@@ -14,6 +14,7 @@ public class Main {
         			for (int i = 0; i < repeat; i++) {
             				Simulation.generateData(90);
 				}
+				System.out.println(Result.getTopNumbers());
 				break;
 			case 2:
 				Simulation.setNumberOfBalls(6);
