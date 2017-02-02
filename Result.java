@@ -20,22 +20,21 @@ public class Result {
 	public static String temp , mostCommon;	
 	public static int max = 0;
 
+	public int number1;
+	public int number2;
+	public int number3;
+	public int number4;
+	public int number5;
 
-	public static int number1;
-	public static int number2;
-	public static int number3;
-	public static int number4;
-	public static int number5;
-	public static int number6;
 
-	public Result() {
+
+	public Result(int number1, int number2, int number3, int number4, int number5) {
 	
 		this.number1 = number1;
 		this.number2 = number2;
 		this.number3 = number3;
 		this.number4 = number4;
 		this.number5 = number5;
-		this.number6 = number6;
 	}
 
 	public static List<String> getAllNumbers () {
@@ -92,7 +91,15 @@ public class Result {
 
 		return topNumbers;
 	}
-
+	public static Result createResult (List<String> topnumbers) {
+		int number1 = Integer.parseInt(topnumbers.get(0));
+		int number2 = Integer.parseInt(topnumbers.get(1));
+		int number3 = Integer.parseInt(topnumbers.get(2));
+		int number4 = Integer.parseInt(topnumbers.get(3));
+		int number5 = Integer.parseInt(topnumbers.get(4));
+			
+		return new Result(number1, number2, number3, number4, number5);
+	}
 	
 }
 
