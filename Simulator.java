@@ -12,13 +12,13 @@ public class Simulator
     public Simulator(Simulation simulation, Logger logger)
     {
         this.simulation = simulation;
-		this.logger = logger;
+	this.logger = logger;
     }
 
     public static Result run(List<String> topnumbers)
     {
 		Logger.log("Result", "Calculate the best numbers to win: ", "ts");
-    	Logger.waitTime(3000); 
+    		Logger.waitTime(3000); 
 		Logger.log("Result", "These are your winning numbers!: ", "ts");
 		
 		int number1 = Integer.parseInt(topnumbers.get(0));
