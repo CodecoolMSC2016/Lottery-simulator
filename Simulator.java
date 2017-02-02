@@ -1,33 +1,19 @@
-import java.util.concurrent.TimeUnit;
-import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.List;
-import java.util.Collections;
-import java.util.Scanner;
-import java.io.PrintWriter;
-import java.io.File;
-import java.io.IOException;
-import java.io.FileOutputStream;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.concurrent.*;
+import java.io.*;
+import java.nio.charset.*;
+import java.nio.file.*;
+import java.util.*;
 
 public class Simulator
 {
     public Simulation simulation;
     public static Logger logger;
+
 	
-
-
     public Simulator(Simulation simulation, Logger logger)
     {
         this.simulation = simulation;
-		this.logger = logger;
+	this.logger = logger;
     }
 
     public static Result run(List<String> topnumbers)
@@ -48,6 +34,8 @@ public class Simulator
 	public static String toString(Result result) {
 		return result.number1 + " " + result.number2 + " " + result.number3 + " " + result.number4 + " " + result.number5;
 	}
+
+	
 
 
 }

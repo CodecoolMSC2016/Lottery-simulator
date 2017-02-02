@@ -3,31 +3,25 @@ public class Main {
 	public static void main (String [] args) {
 		int userChoice;
 		int repeat;
-		Result new1;	
+		Result getnumbers;
+		Result getnums;	
 
 		userChoice = Logger.menu();
 		switch(userChoice) {
 			case 1:
-				Simulation.setNumberOfBalls(5);
 				repeat = Integer.parseInt(args[0]);
-				Simulation.getChosenNumbers(90);
+				Simulation.getChosenNumbers();
         			for (int i = 0; i < repeat; i++) {
-            				Simulation.generateData(90);
+            				Simulation.generateData();
 				}
-				System.out.println(Result.getTopNumbers((Result.getAllNumbers())));
-				new1 = Simulator.run(Result.getTopNumbers((Result.getAllNumbers())));
-				System.out.println(Simulator.toString(new1));
+				getnumbers = Simulator.run(Result.getTopNumbers((Result.getAllNumbers("Simulation5.csv"))));
+				Logger.log("Result", Simulator.toString(getnumbers), "ts");
+				Logger.log("History", "The last 5 years' most common numbers are:", "ts");
+				getnums = Result.createResult(Result.getTopNumbers((Result.getAllNumbers("otos.csv"))));
+				Logger.log("History", Simulator.toString(getnums), "ts");
 				
 				break;
-			case 2:
-				Simulation.setNumberOfBalls(6);
-				repeat = Integer.parseInt(args[0]);
-				System.out.println(repeat);
-				Simulation.getChosenNumbers(45);
-        			for (int i = 0; i < repeat; i++) {
-            				Simulation.generateData(45);
-				}
-				break;
+
 		}
 	
 	}
