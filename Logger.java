@@ -1,6 +1,7 @@
 import java.util.*;
 import java.text.*;
 import java.time.*;
+import java.lang.Thread;
 
 public class Logger
 {
@@ -64,5 +65,43 @@ public class Logger
 		}
 		return selection;
 	}
+ 	public static void waitTime(int millisecond) {
+   		try {
+			Thread.sleep(millisecond);
+		}catch (InterruptedException e) {};
+	}
+
+	public static void printLogo() {
+    		String [] logo = new String [] {"_____________________      ______        __________               ______ ",
+                      		  "___  __ )__    |__  /      ___  /_______ __  /__  /_____  _____  ____  /__",
+                      		  "__  __  |_  /| |_  /       __  __ \\  __ `/  __/  __/_  / / /  / / /_  //_/",
+                      		  "_  /_/ /_  ___ |  /__      _  / / / /_/ // /_ / /_ _  /_/ // /_/ /_  ,<   ",
+                      		  "/_____/ /_/  |_/____/      /_/ /_/\\__,_/ \\__/ \\__/ _\\__, / \\__,_/ /_/|_|  ",
+                      		  "                                                   /____/                ",
+                      		  "                            Lottery Simulator ™ \n\n"};
+    		for(String line: logo) {
+      			System.out.println(line);
+    		}
+	}
+	public static void printLottery() {
+		String [] lotto = new String [] { "                             ,---')                     ",
+						  "                            (  -_-(                     ",
+						  "                            ) .__/ )                    ",
+						  "                          _/ _/_( /        _.---._      ",
+						  "                         (__/ _ _) ,-._   /  o    \\     ",
+						  "                           //)__(\\/,-` |_| O  o o O|    ",
+						  "                       _\\///==o=\'      |O o  o O |    ",
+						  "                        `-' \\    /        \\O o   o/     ",
+						  "                             )___\\         `'-.-\\      ",
+						  "                            / ,\\ \\       ____)_(____    ",
+						  "                           / /  \\ \\     '--..---,,--'   ",
+						  "                          /()    >()        \\_//       ",
+						  "                          |\\_\\   |\\_\\       /,-.\\      \n\n"};
+		for(String line: lotto) {
+      			System.out.println(line);
+    		}
+	}
+
+   
 
 }

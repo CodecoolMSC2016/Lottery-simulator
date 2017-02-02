@@ -1,25 +1,24 @@
-import java.util.concurrent.*;
 import java.io.*;
 import java.nio.charset.*;
 import java.nio.file.*;
 import java.util.*;
 
+
 public class Simulator
 {
     public Simulation simulation;
     public static Logger logger;
-
 	
     public Simulator(Simulation simulation, Logger logger)
     {
         this.simulation = simulation;
-	this.logger = logger;
+		this.logger = logger;
     }
 
     public static Result run(List<String> topnumbers)
     {
 		Logger.log("Result", "Calculate the best numbers to win: ", "ts");
-
+    	Logger.waitTime(3000); 
 		Logger.log("Result", "These are your winning numbers!: ", "ts");
 		
 		int number1 = Integer.parseInt(topnumbers.get(0));
