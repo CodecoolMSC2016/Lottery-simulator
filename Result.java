@@ -10,11 +10,16 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.Collections;
+import java.util.*;
 
 
 public class Result {
 
+	public static List<String> allNumbers = new ArrayList<>();
 	public static List<String> topNumbers = new ArrayList<>();
+	public static String temp , mostCommon;	
+	public static int max = 0;
+
 
 	public static int number1;
 	public static int number2;
@@ -33,7 +38,7 @@ public class Result {
 		this.number6 = number6;
 	}
 
-	public static List<String> getTopNumbers () {
+	public static List<String> getAllNumbers () {
         	Path pathToFile = Paths.get("Simulation5.csv");
 
         	// create an instance of BufferedReader
@@ -54,7 +59,7 @@ public class Result {
 	
                 	// adding all numbers into ArrayList
 				for(int i=0; i<5; i++) {
-                			topNumbers.add(attributes[i]);
+                			allNumbers.add(attributes[i]);
 				}
 
                		// read next line before looping
@@ -65,9 +70,29 @@ public class Result {
         	} catch (IOException ioe) {
             		ioe.printStackTrace();
         	}
-		Collections.sort(topNumbers);
-        return topNumbers;
-    }
+		Collections.sort(allNumbers);
+        return allNumbers;
+    	}
+
+	public static List<String> getTopNumbers (List<String> allnumbers) {
+		
+		Set<String> unique = new HashSet<String>(allnumbers);
+		for (int i=0; i<5; i ++ ) {
+			for (String key : unique) {
+
+				if (Collections.frequency(allnumbers, key) > max && !(topNumbers.contains(key))) {
+
+					max = Collections.frequency(allnumbers, key);
+					mostCommon = key;
+					
+				} 
+			}topNumbers.add(mostCommon);
+			max = 0;
+		}
+
+		return topNumbers;
+	}
+
 	
 }
 
